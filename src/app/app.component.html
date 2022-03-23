@@ -8,15 +8,30 @@
   <div fxLayout="row">
     <button
       mat-icon-button
-      matBadge="15"
+      [matBadge]="count || null"
       matBadgeColor="warn"
       aria-label="Reset mail count"
+      (click)="reset()"
     >
       <mat-icon>mail_outline</mat-icon>
     </button>
   </div>
   <div fxLayout="row" fxLayoutGap="8px">
-    <button mat-raised-button color="primary">Start receiving</button>
-    <button mat-raised-button color="accent">Stop receiving</button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="start()"
+      [disabled]="receiving"
+    >
+      Start receiving
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="stop()"
+      [disabled]="!receiving"
+    >
+      Stop receiving
+    </button>
   </div>
 </div>
